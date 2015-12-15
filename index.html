@@ -20,6 +20,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 
   <!-- Tells the browser what the title of this page should be. -->
   <title>Resume</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
   <!-- Load the page styles. -->
   <link href="css/style.css" rel="stylesheet">
@@ -46,7 +47,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   Uncomment the <script> tag below when you're ready to add an interactive
   Google Map to your resume!
   -->
-<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <meta name="viewport" content="width=device-width">
 </head>
@@ -58,15 +59,27 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     resume below. You can pretty easily figure out what each section will
     display by looking at the id or at what's written between the <h2> tags.
     -->
-    <div id="header" class="center-content clear-fix">
-      <ul id="topContacts" class="flex-box"></ul>
+    <div id="navbar">
+      <ul>
+        <li class="nav-li"><a id="headLink" class="nav-item" href="">Home</a></li>
+        <li class="nav-li"><a id="workExpLink" class="nav-item" href="">Work Experience</a></li>
+        <li class="nav-li"><a id="projectsLink" class="nav-item" href="">Projects</a></li>
+        <li class="nav-li"><a id="educationLink" class="nav-item" href="">Education</a></li>
+        <li class="nav-li"><a id="mapLink" class="nav-item" href="">Map</a></li>
+      </ul>
     </div>
+    <a class="anchor" id="top"></a>
+    <header id="header" class="center-content clear-fix">
+      <ul id="topContacts" class="flex-box"></ul>
+    </header>
     <div style="clear: both;"></div>
     <div id="workExperience" class="gray">
       <h2>Work Experience</h2>
     </div>
     <div id="projects">
       <h2>Projects</h2>
+      <div id="projectItems" class="flex-box">
+      </div>
     </div>
     <div id="education" class="gray">
       <h2>Education</h2>
@@ -75,9 +88,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       <h2>Where I've Lived and Worked</h2>
     </div>
     <div id="lets-connect" class="dark-gray">
-      <h2 class="orange center-text">Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
-      </ul>
+      <h3 class="dark-grey-text light-green center-text">Let's Connect</h2>
+        <ul id="footerContacts" class="flex-box"></ul>
     </div>
   </div>
 
@@ -112,26 +124,26 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     */
 
 
-    if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('topContacts').style.display = 'none';
+    if(document.getElementsByClassName("flex-item").length === 0) {
+      document.getElementById("topContacts").style.backgroundColor = "black";
     }
-    if(document.getElementsByTagName('h1').length === 0) {
-      document.getElementById('header').style.display = 'none';
+    if(document.getElementsByTagName("h1").length === 0) {
+      document.getElementById("header").style.backgroundColor = "black";
     }
-    if(document.getElementsByClassName('work-entry').length === 0) {
-      document.getElementById('workExperience').style.display = 'none';
+    if(document.getElementsByClassName("work-entry").length === 0) {
+      document.getElementById("workExperience").style.backgroundColor = "black";
     }
-    if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.display = 'none';
+    if(document.getElementsByClassName("project-entry").length === 0) {
+      document.getElementById("projects").style.backgroundColor = "black";
     }
-    if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.display = 'none';
+    if(document.getElementsByClassName("education-entry").length === 0) {
+      document.getElementById("education").style.backgroundColor = "black";
     }
-    if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('lets-connect').style.display = 'none';
+    if(document.getElementsByClassName("flex-item").length === 0) {
+      document.getElementById("lets-connect").style.backgroundColor = "black";
     }
-    if(document.getElementById('map') === null) {
-      document.getElementById('mapDiv').style.display = 'none';
+    if(document.getElementById("map") === null) {
+      document.getElementById("mapDiv").style.backgroundColor = "black";
     }
   </script>
 </body>
