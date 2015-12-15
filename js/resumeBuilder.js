@@ -154,6 +154,7 @@ education.display();
 
 $("#mapDiv").append(googleMap);
 
+// Functions to scroll to screen region using nav bar
 function attachScrollToElement(link, element, offset) {
     link.onclick = scrollToElement(element, offset);
 }
