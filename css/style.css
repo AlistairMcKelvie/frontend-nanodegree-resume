@@ -1,34 +1,31 @@
-body,
-div,
-ul,
-li,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+* {
   padding:0;
   margin:0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
 .clear-fix {
   overflow: auto;
 }
 
+.anchor {
+  padding: 16px;
+}
+
 .education-entry,
-.work-entry,
-.project-entry {
+.work-entry{
   padding: 0 5%;
+}
+
+.project-entry {
 }
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: #008062;
   line-height: 48px;
   display: inline;
+  text-shadow: 2px 2px #333;
 }
 
 h2 {
@@ -58,7 +55,6 @@ h3,
 h4,
 h5 {
   padding:10px 5%;
-
 }
 
 
@@ -76,7 +72,6 @@ h5 {
   color: #999;
   line-height: 16px;
   float: right;
-
 }
 
 p {
@@ -86,7 +81,7 @@ p {
 }
 
 a {
-  color: #1199c3;
+  color: #8a8;
   text-decoration: none;
   margin-top: 10px;
   display: block;
@@ -94,27 +89,28 @@ a {
 
 .welcome-message {
   font-style: italic;
-  font-size: 18px;
-  color: #f3f3f3;
+  font-size: 24px;
+  font-weight: bold;
+  color: #008062;
   line-height: 28px;
 }
 
 #skills-h3 {
-  color: #f5ae23;
+  color: #333;
   display: none;
 }
 
-.orange {
-  background-color: #f5ae23;
+.light-green {
+  background-color: #8a8;
 }
 
-.orange-text {
-  color: #f5ae23;
+.dark-grey-text {
+  color: #333;
 }
 
 .white-text {
-  font-weight: bold;
-  color: #fff;
+  color: #eee;
+
 }
 
 .gray {
@@ -127,9 +123,9 @@ a {
   background-color: #4a4a4a;
 }
 
-/* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #8a8;
+  background-size: cover;
 }
 
 .flex-box {
@@ -138,7 +134,19 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 10px;
+  padding: 10px 5%;
+}
+
+.flex-img {
+  max-width: 100%;
+}
+
+.col-12 {
+  width: calc(100% - 20px);
+}
+
+.col-6 {
+  width: calc(50% - 20px);
 }
 
 .center-content {
@@ -170,13 +178,13 @@ span {
 
 /* Media queries to handle various device widths */
 
-@media only screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   #lets-connect {
     margin-top: 5%;
   }
 }
 
-@media only screen and (max-width:900px) {
+@media screen and (max-width:900px) {
   .biopic {
     width: 175px;
   }
@@ -211,4 +219,40 @@ span {
   .biopic {
     display: block;
   }
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.nav-li {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 450px) {
+  .nav-li {
+    padding: 12px 14px;
+  }
+  .nav-item {
+    font-size: 13px;
+  }
+}
+
+.nav-li:hover {
+  background-color: #111;
+}
+
+.nav-item {
+  margin: 0;
 }
