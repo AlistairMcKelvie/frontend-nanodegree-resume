@@ -54,7 +54,7 @@ var HTMLonlineTitle = '<a href="%url%">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div><br>';
 
-var internationalizeButton = '<button>Internationalize</button>';console.log(name);
+var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
 
 
@@ -130,13 +130,17 @@ function initializeMap() {
     // iterates through school locations and appends each location to
     // the locations array
     for (var school in education.schools) {
-      locations.push(education.schools[school].location);
+      if (education.schools.hasOwnProperty(school)) {
+        locations.push(education.schools[school].location);
+      }
     }
 
     // iterates through work locations and appends each location to
     // the locations array
     for (var job in work.jobs) {
-      locations.push(work.jobs[job].location);
+      if(work.jobs.hasOwnProperty(job)) {
+        locations.push(work.jobs[job].location);
+      }
     }
     return locations;
   }
@@ -162,19 +166,21 @@ function initializeMap() {
     });
 
     function latString() {
+      var latName;
       if (lat >= 0) {
-        var latName = "N";
+        latName = "N";
       } else {
-        var latName = "S";
+        latName = "S";
       }
       return Math.abs(lat).toFixed(1) + latName;
     }
 
     function lonString() {
+      var lonName;
       if (lon >= 0) {
-        var lonName = "E";
+        lonName = "E";
       } else {
-        var lonName = "W";
+        lonName = "W";
       }
       return Math.abs(lon).toFixed(1) + lonName;
     }
@@ -222,15 +228,16 @@ function initializeMap() {
 
     // Iterates through the array of locations, creates a search object for each location
     for (var place in locations) {
+      if(location.hasOwnProperty(place)) {
+        // the search request object
+        var request = {
+          query: locations[place]
+        };
 
-      // the search request object
-      var request = {
-        query: locations[place]
-      };
-
-      // Actually searches the Google Maps API for location data and runs the callback
-      // function with the search results after each search.
-      service.textSearch(request, callback);
+        // Actually searches the Google Maps API for location data and runs the callback
+        // function with the search results after each search.
+        service.textSearch(request, callback);
+      }
     }
   }
 

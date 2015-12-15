@@ -16,7 +16,7 @@ var bio = {
         'Java',
         'Kivy'
     ],
-    'biopic': 'images/fry.jpg',
+    'biopic': ['images/fry.jpg'],
     'display': function() {
         for (var method in this.contacts) {
             if (this.contacts.hasOwnProperty(method)) {
@@ -29,7 +29,7 @@ var bio = {
         $('#header').append(HTMLbioPic.replace(/%data%/, this.biopic));
         $('#header').append(HTMLwelcomeMsg.replace(/%data%/, this.welcomeMessage));
 
-        if (this.skills.length != 0) {
+        if (this.skills.length !== 0) {
             $('#header').append(HTMLskillsStart);
             this.skills.forEach(function(val) {
                 $('#skills').append(HTMLskills.replace(/%data%/, val));
@@ -68,7 +68,7 @@ var work = {
             jobData += HTMLworkDates.replace(/%data%/, val.dates);
             jobData += HTMLworkDescription.replace(/%data%/, val.description);
             $('.work-entry:last').append(jobData);
-        })
+        });
     }
 };
 work.display();
@@ -78,12 +78,12 @@ var projects = {
         'title': 'Online Portfolio',
         'dates': 'October 2015 - November 2015',
         'description': 'An online portfolio for Udacity Front End Developer Nanodegree',
-        'image': 'images/proj1.jpg'
+        'images': ['images/proj1.jpg']
     }, {
         'title': 'Online Resume',
         'dates': 'November 2015 - December 2015',
         'description': 'An online portfolio for Udacity Front End Developer Nanodegree',
-        'image': 'images/proj2.jpg'
+        'images': ['images/proj2.jpg']
     }],
     'display': function() {
         this.projects.forEach(function(project) {
@@ -91,9 +91,11 @@ var projects = {
             var projData = HTMLprojectTitle.replace(/%data%/, project.title);
             projData += HTMLprojectDates.replace(/%data%/, project.dates);
             projData += HTMLprojectDescription.replace(/%data%/, project.description);
-            projData += HTMLprojectImage.replace(/%data%/, project.image);
+            project.images.forEach(function(image) {
+                projData += HTMLprojectImage.replace(/%data%/, image);
+            });
             $('.project-entry:last').append(projData);
-        })
+        });
     }
 };
 projects.display();
@@ -103,29 +105,29 @@ var education = {
         'name': 'Australian Bureau of Meteology Training Centre',
         'location': 'Melbourne, Australia',
         'degree': 'Graduate Diploma of Meteorology',
-        'major': ['Meteorology'],
+        'majors': ['Meteorology'],
         'dates': 2011,
         'url': 'http://www.bom.gov.au'
     }, {
         'name': 'Monash University',
         'location': 'Melbourne, Australia',
         'degree': 'Bachelor of Science',
-        'major': ['Applied Mathematics'],
+        'majors': ['Applied Mathematics'],
         'dates': 2008,
         'url': 'http://www.monash.edu.au/campuses/clayton/'
     }],
     'onlineCourses': [{
-        'name': 'Algorithms: Design: and Analysis, Part 1',
+        'title': 'Algorithms: Design: and Analysis, Part 1',
         'school': 'Stanford University',
         'date': 2014,
         'url': 'http://www.coursera.org/course/algo'
     }, {
-        'name': 'Algorithms: Design: and Analysis, Part 2',
+        'title': 'Algorithms: Design: and Analysis, Part 2',
         'school': 'Stanford University',
         'date': 2015,
         'url': 'http://www.coursera.org/course/algo2'
     }, {
-        'name': 'Cryptography 1',
+        'title': 'Cryptography 1',
         'school': 'Stanford University',
         'date': 2014,
         'url': 'http://www.coursera.org/course/crypto'
@@ -137,17 +139,19 @@ var education = {
             schoolData += HTMLschoolDegree.replace(/%data%/, school.degree);
             schoolData += HTMLschoolDates.replace(/%data%/, school.dates);
             schoolData += HTMLschoolLocation.replace(/%data%/, school.location);
-            schoolData += HTMLschoolMajor.replace(/%data%/, school.major);
+            school.majors.forEach(function(major) {
+                schoolData += HTMLschoolMajor.replace(/%data%/, major);
+            });
             $('.education-entry:last').append(schoolData);
-        })
+        });
         $('#education').append(HTMLonlineClasses);
         this.onlineCourses.forEach(function(course) {
             $('#education').append(HTMLschoolStart);
-            var courseData = HTMLonlineTitle.replace(/%data%/, course.name).replace(/%url%/, course.url);
+            var courseData = HTMLonlineTitle.replace(/%data%/, course.title).replace(/%url%/, course.url);
             courseData += HTMLonlineSchool.replace(/%data%/, course.school);
             courseData += HTMLonlineDates.replace(/%data%/, course.date);
             $('.education-entry:last').append(courseData);
-        })
+        });
     }
 };
 education.display();
@@ -165,7 +169,7 @@ function scrollToElement(element, offset) {
             scrollTop: element.offset().top + offset
         }, 1000);
         return false;
-    }
+    };
 }
 var NAVBAR_HEIGHT = 32;
 attachScrollToElement($('#headLink')[0], $('header'), -NAVBAR_HEIGHT);
