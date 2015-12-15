@@ -45,7 +45,7 @@ var work = {
         'title': 'Meteorologist',
         'location': 'Melbourne, Australia',
         'dates': '2008 - Present',
-        'description': 'Weather forecasting. Python programming.'
+        'description': 'Weather forecasting. Science programming.'
     }, {
         'employer': 'Chevron Thailand',
         'title': 'Offshore Meteorologist',
