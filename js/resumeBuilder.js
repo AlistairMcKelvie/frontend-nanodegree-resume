@@ -39,60 +39,6 @@ var bio = {
 };
 bio.display();
 
-var education = {
-    "schools": [{
-        "name": "Australian Bureau of Meteology Training Centre",
-        "location": "Melbourne, Australia",
-        "degree": "Graduate Diploma of Meteorology",
-        "major": ["Meteorology"],
-        "dates": 2011,
-        "url": "http://www.bom.gov.au"
-    }, {
-        "name": "Monash University",
-        "location": "Melbourne, Australia",
-        "degree": "Bachelor of Science",
-        "major": ["Applied Mathematics"],
-        "dates": 2008,
-        "url": "http://www.monash.edu.au/campuses/clayton/"
-    }],
-    "onlineCourses": [{
-        "name": "Algorithms: Design: and Analysis, Part 1",
-        "school": "Stanford University",
-        "date": 2014,
-        "url": "http://www.coursera.org/course/algo"
-    }, {
-        "name": "Algorithms: Design: and Analysis, Part 2",
-        "school": "Stanford University",
-        "date": 2015,
-        "url": "http://www.coursera.org/course/algo2"
-    }, {
-        "name": "Cryptography 1",
-        "school": "Stanford University",
-        "date": 2014,
-        "url": "http://www.coursera.org/course/crypto"
-    }],
-    "display": function() {
-        this.schools.forEach(function(school) {
-            $("#education").append(HTMLschoolStart);
-            var schoolData = HTMLschoolName.replace(/%data%/, school.name).replace(/%url%/, school.url);
-            schoolData += HTMLschoolDegree.replace(/%data%/, school.degree);
-            schoolData += HTMLschoolDates.replace(/%data%/, school.dates);
-            schoolData += HTMLschoolLocation.replace(/%data%/, school.location);
-            schoolData += HTMLschoolMajor.replace(/%data%/, school.major);
-            $(".education-entry:last").append(schoolData);
-        })
-        $("#education").append(HTMLonlineClasses);
-        this.onlineCourses.forEach(function(course) {
-            $("#education").append(HTMLschoolStart);
-            var courseData = HTMLonlineTitle.replace(/%data%/, course.name).replace(/%url%/, course.url);
-            courseData += HTMLonlineSchool.replace(/%data%/, course.school);
-            courseData += HTMLonlineDates.replace(/%data%/, course.date);
-            $(".education-entry:last").append(courseData);
-        })
-    }
-};
-education.display();
-
 var work = {
     "jobs": [{
         "employer": "Offshore Weather Services",
@@ -152,9 +98,63 @@ var projects = {
 };
 projects.display();
 
+var education = {
+    "schools": [{
+        "name": "Australian Bureau of Meteology Training Centre",
+        "location": "Melbourne, Australia",
+        "degree": "Graduate Diploma of Meteorology",
+        "major": ["Meteorology"],
+        "dates": 2011,
+        "url": "http://www.bom.gov.au"
+    }, {
+        "name": "Monash University",
+        "location": "Melbourne, Australia",
+        "degree": "Bachelor of Science",
+        "major": ["Applied Mathematics"],
+        "dates": 2008,
+        "url": "http://www.monash.edu.au/campuses/clayton/"
+    }],
+    "onlineCourses": [{
+        "name": "Algorithms: Design: and Analysis, Part 1",
+        "school": "Stanford University",
+        "date": 2014,
+        "url": "http://www.coursera.org/course/algo"
+    }, {
+        "name": "Algorithms: Design: and Analysis, Part 2",
+        "school": "Stanford University",
+        "date": 2015,
+        "url": "http://www.coursera.org/course/algo2"
+    }, {
+        "name": "Cryptography 1",
+        "school": "Stanford University",
+        "date": 2014,
+        "url": "http://www.coursera.org/course/crypto"
+    }],
+    "display": function() {
+        this.schools.forEach(function(school) {
+            $("#education").append(HTMLschoolStart);
+            var schoolData = HTMLschoolName.replace(/%data%/, school.name).replace(/%url%/, school.url);
+            schoolData += HTMLschoolDegree.replace(/%data%/, school.degree);
+            schoolData += HTMLschoolDates.replace(/%data%/, school.dates);
+            schoolData += HTMLschoolLocation.replace(/%data%/, school.location);
+            schoolData += HTMLschoolMajor.replace(/%data%/, school.major);
+            $(".education-entry:last").append(schoolData);
+        })
+        $("#education").append(HTMLonlineClasses);
+        this.onlineCourses.forEach(function(course) {
+            $("#education").append(HTMLschoolStart);
+            var courseData = HTMLonlineTitle.replace(/%data%/, course.name).replace(/%url%/, course.url);
+            courseData += HTMLonlineSchool.replace(/%data%/, course.school);
+            courseData += HTMLonlineDates.replace(/%data%/, course.date);
+            $(".education-entry:last").append(courseData);
+        })
+    }
+};
+education.display();
+
 $("#mapDiv").append(googleMap);
 
-function attachScollToElement(link, element, offset) {
+function attachScrollToElement(link, element, offset) {
     link.onclick = scrollToElement(element, offset);
 }
 
@@ -167,8 +167,8 @@ function scrollToElement(element, offset) {
     }
 }
 var NAVBAR_HEIGHT = 32;
-attachScollToElement($("#headLink")[0], $("header"), -NAVBAR_HEIGHT);
-attachScollToElement($("#workExpLink")[0], $("#workExperience"), -NAVBAR_HEIGHT);
-attachScollToElement($("#projectsLink")[0], $("#projects"), -NAVBAR_HEIGHT);
-attachScollToElement($("#educationLink")[0], $("#education"), -NAVBAR_HEIGHT);
-attachScollToElement($("#mapLink")[0], $("#mapDiv"), -NAVBAR_HEIGHT);
+attachScrollToElement($("#headLink")[0], $("header"), -NAVBAR_HEIGHT);
+attachScrollToElement($("#workExpLink")[0], $("#workExperience"), -NAVBAR_HEIGHT);
+attachScrollToElement($("#projectsLink")[0], $("#projects"), -NAVBAR_HEIGHT);
+attachScrollToElement($("#educationLink")[0], $("#education"), -NAVBAR_HEIGHT);
+attachScrollToElement($("#mapLink")[0], $("#mapDiv"), -NAVBAR_HEIGHT);
