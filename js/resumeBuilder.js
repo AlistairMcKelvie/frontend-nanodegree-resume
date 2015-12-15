@@ -154,37 +154,21 @@ projects.display();
 
 $("#mapDiv").append(googleMap);
 
-$("#headLink")[0].onclick = function() {
-    $("html, body").animate({
-        scrollTop: $("header").offset().top - 32
-    }, 1000);
-    return false;
-};
+function attachScollToElement(link, element, offset) {
+    link.onclick = scrollToElement(element, offset);
+}
 
-$("#workExpLink")[0].onclick = function() {
-    $("html, body").animate({
-        scrollTop: $("#workExperience").offset().top - 32
-    }, 1000);
-    return false;
-};
-
-$("#projectsLink")[0].onclick = function() {
-    $("html, body").animate({
-        scrollTop: $("#projects").offset().top - 32
-    }, 1000);
-    return false;
-};
-
-$("#educationLink")[0].onclick = function() {
-    $("html, body").animate({
-        scrollTop: $("#education").offset().top - 32
-    }, 1000);
-    return false;
-};
-
-$("#mapLink")[0].onclick = function() {
-    $("html, body").animate({
-        scrollTop: $("#mapDiv").offset().top - 48
-    }, 1000);
-    return false;
-};
+function scrollToElement(element, offset) {
+    return function() {
+        $("html, body").animate({
+            scrollTop: element.offset().top + offset
+        }, 1000);
+        return false;
+    }
+}
+var NAVBAR_HEIGHT = 32;
+attachScollToElement($("#headLink")[0], $("header"), -NAVBAR_HEIGHT);
+attachScollToElement($("#workExpLink")[0], $("#workExperience"), -NAVBAR_HEIGHT);
+attachScollToElement($("#projectsLink")[0], $("#projects"), -NAVBAR_HEIGHT);
+attachScollToElement($("#educationLink")[0], $("#education"), -NAVBAR_HEIGHT);
+attachScollToElement($("#mapLink")[0], $("#mapDiv"), -NAVBAR_HEIGHT);
